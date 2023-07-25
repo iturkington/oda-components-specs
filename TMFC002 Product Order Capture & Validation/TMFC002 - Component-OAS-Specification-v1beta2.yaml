@@ -38,7 +38,7 @@ coreFunction:
         - GET /id  
     - name: QuoteManagement
       id: TMF648
-      isRequired: yes
+      isRequired: no
       version: 4.0
       specification:  https://raw.githubusercontent.com/tmforum-apis/TMF648_QuoteManagement/master/TMF648-QuoteManagement-v4.0.0.swagger.json
       implementation: /{{.Release.Name}}-QuoteManagement
@@ -52,7 +52,7 @@ coreFunction:
         - DELETE
     - name: ShoppingCart
       id: TMF663
-      isRequired: yes
+      isRequired: no
       version: 4.0
       specification: https://github.com/tmforum-apis/TMF663_ShoppingCart/blob/master/TMF663-ShoppingCart-v2.0.4.swagger.json
       implementation: /{{.Release.Name}}-QuoteManagement
@@ -94,12 +94,11 @@ coreFunction:
       path: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/v4
       developerUI: /{{.Release.Name}}-{{.Values.component.type}}/tmf-api/EventManagement/v4/docs
       port: 8080
-      rerouces: 
-      - event:  
-        - GET
-        - GET /id
+      resources: 
+      - listener:
         - POST
-        - PATCH
+      - hub:
+        - POST
         - DELETE
     dependantAPIs:
     - name: ProductCatalogManagement 
